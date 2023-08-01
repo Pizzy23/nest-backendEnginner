@@ -44,7 +44,7 @@ export class MessageGateway
     @MessageBody() body: ChatInput,
     @ConnectedSocket() socket: Socket,
   ) {
-    const msg = await this.service.supportRes(body);
+    const msg = await this.service.chatRes(body);
     this.server.emit('Support', {
       msg: msg,
     });

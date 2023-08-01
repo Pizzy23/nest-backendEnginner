@@ -66,8 +66,6 @@ export class RegisterService extends BaseService {
   }
   private text(data: InputInterface): string {
     return `
-    Seja bem-vindo à plataforma do CREASP, estimado engenheiro!\n
-
     Prezado(a) ${data.nickname},\n
     
     É com grande satisfação que damos as boas-vindas à plataforma do Conselho Regional de Engenharia e Agronomia de São Paulo (CREASP)! Estamos empolgados em tê-lo(a) como membro desta comunidade de profissionais dedicados às áreas de engenharia e agronomia.
