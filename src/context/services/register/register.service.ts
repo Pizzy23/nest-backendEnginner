@@ -43,7 +43,7 @@ export class RegisterService extends BaseService {
         },
       );
     } catch (e) {
-      if ((e.message = 'Pass or email not valid')) {
+      if ((e.message == 'Pass or email not valid')) {
         throw new HttpException(
           'Pass or email not valid',
           HttpStatus.NOT_ACCEPTABLE,
@@ -53,7 +53,7 @@ export class RegisterService extends BaseService {
         );
       }
       throw new HttpException('message', HttpStatus.INTERNAL_SERVER_ERROR, {
-        cause: new Error(e),
+        cause: new Error(e.message),
       });
     }
   }
@@ -67,8 +67,11 @@ export class RegisterService extends BaseService {
   private text(data: InputInterface): string {
     return `
     Seja bem-vindo à plataforma do CREASP, estimado engenheiro!
+
     Prezado(a) ${data.nickname},
+    
     É com grande satisfação que damos as boas-vindas à plataforma do Conselho Regional de Engenharia e Agronomia de São Paulo (CREASP)! Estamos empolgados em tê-lo(a) como membro desta comunidade de profissionais dedicados às áreas de engenharia e agronomia.
+    
     Agora que você faz parte do CREASP, é com prazer que enviamos o seu CREASP ID, que será seu identificador único para acessar sua conta na plataforma:
     
     CREASP ID: ${data.creaSP}`;
