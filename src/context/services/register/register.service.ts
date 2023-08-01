@@ -32,7 +32,11 @@ export class RegisterService extends BaseService {
           creaSP: crea,
         };
         await this.repository.putUserInDb(data);
-        super.sendMail(input.email, this.text(data), 'Seja bem-vindo à plataforma do CREASP, estimado engenheiro!');
+        super.sendMail(
+          input.email,
+          this.text(data),
+          'Seja bem-vindo à plataforma do CREASP, estimado engenheiro!',
+        );
         return { res: 'User create', status: HttpStatus.CREATED };
       }
       throw new HttpException(
@@ -43,7 +47,7 @@ export class RegisterService extends BaseService {
         },
       );
     } catch (e) {
-      if ((e.message == 'Pass or email not valid')) {
+      if (e.message == 'Pass or email not valid') {
         throw new HttpException(
           'Pass or email not valid',
           HttpStatus.NOT_ACCEPTABLE,
@@ -52,7 +56,7 @@ export class RegisterService extends BaseService {
           },
         );
       }
-      throw new HttpException('message', HttpStatus.INTERNAL_SERVER_ERROR, {
+      throw new HttpException(e.message, HttpStatus.INTERNAL_SERVER_ERROR, {
         cause: new Error(e.message),
       });
     }
