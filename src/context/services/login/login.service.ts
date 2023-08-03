@@ -16,8 +16,15 @@ export class LoginService extends BaseService {
         await this.repository.putLogin(putLogin.uuid);
         return { res: 'User logged in', status: HttpStatus.OK };
       }
-      return { res: 'Password Incorrect', status: HttpStatus.NOT_ACCEPTABLE };
+      throw new HttpException('Pass  not valid', HttpStatus.NOT_ACCEPTABLE, {
+        cause: new Error('Pass not valid'),
+      });
     } catch (err) {
+      if (err.message == 'Pass  not valid') {
+        throw new HttpException('Pass  not valid', HttpStatus.NOT_ACCEPTABLE, {
+          cause: new Error('Pass  not valid'),
+        });
+      }
       throw new Error(err);
     }
   }

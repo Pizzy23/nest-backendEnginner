@@ -21,7 +21,7 @@ export class RegisterService extends BaseService {
       if (pass == true && email == true) {
         const crea = await this.createCreaSP();
         const data = {
-          uuid: input.uuid,
+          uuid: await super.encrypt(input.uuid),
           date: input.date,
           email: input.email,
           name: input.name,

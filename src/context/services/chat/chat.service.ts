@@ -5,7 +5,7 @@ import {
   CAT_OR_ART,
   CAT_ART,
   STARTER_RESPONSE,
-} from 'src/view/constants/chat/chat.contants';
+} from 'src/view/constants/chat/chat.constants';
 
 @Injectable()
 export class ChatService extends BaseService {
