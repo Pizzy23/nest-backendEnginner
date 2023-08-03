@@ -8,3 +8,9 @@ export class InputEmail {
   @IsString()
   email: string;
 }
+@Injectable()
+export class InputCep {
+  @ApiProperty()
+  @IsString()
+  cep: string;
+}
