@@ -14,10 +14,10 @@ export class ContractsService extends BaseService {
       const cpfVeri = new CpfVeri();
       const date = new Date(super.date());
       const cpfValid = cpfVeri.verify(data.contractorCnpjCpf);
-      const contractorLocationExist = this.geo.getAdressByCep(
+      const contractorLocationExist = this.geo.validCep(
         data.contractorAddress,
       );
-      const workCepExist = this.geo.getAdressByCep(data.workServiceAddress);
+      const workCepExist = this.geo.validCep(data.workServiceAddress);
       if (
         data.startDate < data.estimatedCompletionDate ||
         data.startDate < data.vinculationEndDate

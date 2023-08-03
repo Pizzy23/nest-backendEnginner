@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get, Headers } from '@nestjs/common';
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ArtService } from 'src/context/services';
 import { ArtDb, ArtDto, GetInfos, StringResDTO } from 'src/view';
@@ -20,8 +20,8 @@ export class ArtController {
   @ApiOperation({
     summary: 'Get info from the user',
   })
-  @Post('')
-  async getInfos(@Body() input: GetInfos): Promise<ArtDb | null> {
+  @Get('')
+  async getInfos(@Headers() input: GetInfos): Promise<ArtDb | null> {
     const res = await this.service.getInfos(input);
     if (res) return res;
   }
