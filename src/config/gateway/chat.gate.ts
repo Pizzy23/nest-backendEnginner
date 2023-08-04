@@ -33,7 +33,6 @@ export class MessageGateway
     @MessageBody() body: ChatInput,
     @ConnectedSocket() socket: Socket,
   ) {
-    console.log(body);
     this.server.emit(body.job, {
       email: body.email,
       msg: body.msg,

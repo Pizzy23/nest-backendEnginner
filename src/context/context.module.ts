@@ -4,6 +4,8 @@ import {
   BaseService,
   RegisterService,
   ArtService,
+  PlusService,
+  SignService,
 } from './services';
 import { LoginService } from './services/login/login.service';
 import { EntityModule } from './entity/entity.module';
@@ -11,7 +13,9 @@ import {
   ArtController,
   CatController,
   LoginController,
+  PlusController,
   RegisterController,
+  SignController,
 } from './controllers';
 import { UtilModule } from 'src/util/util.module';
 import { CatService } from './services/contracts/cat.service';
@@ -23,6 +27,8 @@ import { CatService } from './services/contracts/cat.service';
     RegisterController,
     CatController,
     ArtController,
+    SignController,
+    PlusController,
   ],
   providers: [
     ChatService,
@@ -31,6 +37,8 @@ import { CatService } from './services/contracts/cat.service';
     RegisterService,
     ArtService,
     CatService,
+    PlusService,
+    SignService,
   ],
 })
 export class ContextModule {}
