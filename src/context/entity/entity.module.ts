@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { ContractsEntity, LoginEntity, RegisterEntity } from '.';
 import { PrismaService } from 'src/config';
+import { RegisterEntity } from './register/register.entity';
+import { LoginEntity } from './login/login.entity';
 
 @Module({
-  exports: [PrismaService, LoginEntity, RegisterEntity, ContractsEntity],
-  providers: [PrismaService, LoginEntity, RegisterEntity, ContractsEntity],
+  exports: [PrismaService, RegisterEntity,LoginEntity],
+  providers: [PrismaService, RegisterEntity,LoginEntity],
 })
 export class EntityModule {}
