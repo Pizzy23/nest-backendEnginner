@@ -25,7 +25,7 @@ export class PdfController {
   @UseInterceptors(
     FileInterceptor('file_asset', {
       storage: diskStorage({
-        destination: '/pdfs',
+        destination: './files/',
       }),
     }),
   )
@@ -47,29 +47,5 @@ export class PdfController {
   @Get('read/:filename')
   async readPdf(@Param('filename') filename: string): Promise<string> {
     return this.pdfService.readPdf(filename);
-  }
-  @Post('converter')
-  @ApiConsumes('multipart/form-data')
-  @UseInterceptors(
-    FileInterceptor('file_asset', {
-      storage: diskStorage({
-        destination: '/pdfs',
-      }),
-    }),
-  )
-  @ApiBody({
-    schema: {
-      type: 'object',
-      properties: {
-        file_asset: {
-          type: 'string',
-          format: 'binary',
-        },
-      },
-    },
-  })
-  async convertToPdf(@UploadedFile() file: Express.Multer.File): Promise<any> {
-    console.log(file);
-    return await this.pdfConverterService.convertJpegToPdf(file);
   }
 }

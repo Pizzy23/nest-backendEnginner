@@ -1,0 +1,108 @@
+# CREASP HACKATHON
+
+Apresentamos a nosso aplicativo Revolucionários: Submissão Simplificada de ART e CAT.
+
+Cansado de repetir ARTs com os mesmos dados? Demora na CAT? Nós otimizamos ambos. Experimente nosso serviço.
+
+### Documentação de API AWS
+
+http:000.000.000
+
+
+### Salvamento de modelo ARTs
+
+Otimizamos criação de ARTs com modelos salvos. Não precisa repetir ARTs para o mesmo cliente. Agilidade e eficiência em um só serviço. 
+
+### Inteligencia Artificial para ART, atestado e contrato
+
+Apresentamos nossa inovadora inteligência artificial capaz de detectar e extrair os dados essenciais da ART, atestado e contrato de cada arquivo em PDF enviado. Após a extração, nossa I.A realiza uma validação através de um "get" no banco de dados para assegurar a precisão dos dados, verificando informações cruciais como: data de início e término da obra, nome do contratante, CPF/CNPJ, tipo de pessoa (física ou jurídica) e número da ART.
+
+Desta forma, caso todos os dados estejam corretos, nosso aplicativo permite que a CAT (Certidão de Acervo Técnico) seja concluída. Por outro lado, se houver qualquer discrepância, nosso sistema fornecerá uma mensagem de erro de validação, apontando a natureza do problema encontrado.
+
+Com essa solução tecnológica, temos o compromisso de oferecer maior agilidade, segurança e eficiência em seus processos, garantindo que a documentação esteja em conformidade e livre de inconsistências.
+
+# Casos de uso
+
+1. Modelo Salvo
+
+- Garante que um engenheiro possa criar varias ARTs com facilidade para o mesmo cliente.
+- Ecolomiza tempo do engenheiro.
+
+2. I.A para ART, atestado e contrato
+
+- Envio do documento em PDF para a leitura de dados.
+- São coletados os dados e realizada uma consulta no banco de dados.
+- Se os dados estiverem de acordo com o CREA, a criação da CAT é realizada; caso contrário, a criação não é procedida, exibindo o erro de validação encontrado.
+
+### Pré-condições:
+
+- O usuário é um engenheiro registrado no sistema.
+- O sistema possui uma inteligencia artificial para leitura de dados.
+
+### Pós-condições:
+
+- O usuário recebe respostas imediatas e relevantes para a criação da CAT
+
+### Notas:
+
+- O documento deve estar em PDF
+- É importante fornecer uma interface de usuário intuitiva e fácil de usar para ambas as funcionalidades.
+
+### Como instalar a parte Mobile
+
+Certifique-se de ter o Dart e o Flutter instalados em sua máquina.
+
+Clone este repositório para seu ambiente local.
+
+
+git clone https://github.com/bellujrb/hackathon-creasp-2023
+
+
+Navegue até o diretório do projeto.
+
+
+cd mobile
+
+
+Instale as dependências do projeto.
+
+
+flutter pub add
+
+
+Execute o aplicativo fornecido com o seguinte comando.
+
+
+flutter run
+
+# Design Patterns (Mobile)
+
+- Singleton
+
+# External Packages (Mobile)
+
+- Flutter Modular
+- Flutter doenv
+- GoogleFonts
+- HTTP
+- Logger
+
+# Arquitetura usada (Mobile)
+
+- Clean Dart
+- MVC
+
+### Integração com a I.A
+
+1. Pre-processamento: A inteligência artificial coleta os dados do documento e os envia para o banco de dados.
+
+2. Validação no banco de dados e Verificação: Os dados extraídos da inteligência artificial realizam uma consulta (GET) no banco de dados para verificar se estão corretos antes da criação da CAT.
+
+3. Concluida: Se os dados estiverem corretos, procede-se com a solicitação da criação; caso contrário, é enviada a mensagem de erro.
+
+### Benefícios:
+
+- Maior Eficiência: A integração com a I.A agiliza o processo de verificação de documentos, economizando tempo e recursos.
+- Maior Segurança: A validação automatizada garantem a autenticidade e integridade dos documentos.
+- Agilidade no Fluxo de Trabalho: Os processos de documentação se tornam mais rápidos e fluidos.
+- Melhoria na Experiência do Usuário: Os usuários têm acesso a um sistema mais avançado e eficiente, proporcionando maior satisfação.

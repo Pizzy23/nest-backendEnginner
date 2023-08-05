@@ -21,6 +21,10 @@ export class DateManipulator {
       seconds: seconds,
     };
   }
+  saveFile() {
+    const date = this.createDate();
+    return `${date.year}${date.month}${date.day}${date.hours}${date.minutes}${date.seconds}`;
+  }
   YMD() {
     const date = this.createDate();
     return `${date.year}-${date.month}-${date.day}`;

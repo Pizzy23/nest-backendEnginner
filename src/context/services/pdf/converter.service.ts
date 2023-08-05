@@ -8,24 +8,18 @@ export class PdfConverterService {
   destination = './files/';
   destinationFile: string;
 
-  async saveFile(file: Express.Multer.File): Promise<void> {
-    try {
-      this.fileName = file.originalname;
-      this.destinationFile = `${this.destination}${this.fileName}`;
-      await fs.writeFile(this.destinationFile, file.buffer);
-    } catch (error) {
-      throw new Error(`Could not save file: ${error.message}`);
-    }
+  async createFile(file: Express.Multer.File) {
+    const data = await fs.readFile(`./files/${file.filename}`);
+    await fs.writeFile(`./files/${file.originalname}`, data);
   }
 
-  async convertJpegToPdf(file: Express.Multer.File): Promise<Object> {
+  async convertJpegToPdf(
+    file: Express.Multer.File,
+    name: string,
+  ): Promise<Object> {
     try {
-      return {
-        res: 'Ainda esta em fases de teste',
-        status: HttpStatus.NOT_IMPLEMENTED,
-      };
-      await this.saveFile(file);
-      const imageBytes = await fs.readFile(this.destinationFile);
+      await this.createFile(file);
+      const imageBytes = await fs.readFile(`./files/${file.originalname}`);
       const pdfDoc = await PDFDocument.create();
 
       const image = await pdfDoc.embedJpg(imageBytes);
@@ -39,7 +33,10 @@ export class PdfConverterService {
       });
 
       const pdfBytes = await pdfDoc.save();
-      await fs.writeFile(this.destinationFile, pdfBytes);
+      await fs.writeFile(`./files/${name}.pdf`, pdfBytes);
+      await fs.unlink(`./files/${file.filename}`);
+      await fs.unlink(`./files/${file.originalname}`);
+      return { res: 'Pdf Criado', status: HttpStatus.CREATED };
     } catch (e) {
       console.log(e);
     }
